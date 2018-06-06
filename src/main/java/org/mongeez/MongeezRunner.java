@@ -64,7 +64,7 @@ public class MongeezRunner implements InitializingBean {
             mongeez.setFile(file);
         }
 
-        if(!StringUtils.isEmpty(userName) && !StringUtils.isEmpty(passWord)){
+        if(StringUtils.isNotEmpty(userName) && StringUtils.isNotEmpty(passWord) && StringUtils.isNotEmpty(authDb)){
             MongoAuth auth = new MongoAuth(userName, passWord, authDb);
             mongeez.setAuth(auth);
         }
