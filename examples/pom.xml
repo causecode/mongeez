@@ -91,11 +91,8 @@
     <repositories>
         <!--you need this repo only if you use SNAPSHOT version of mongeez-->
         <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
+            <id>nexus</id>
+            <url>https://nexus.causecode.com/repository/maven-releases/</url>
         </repository>
 
         <!--this repo is used to get the latest morphia (it's still not in maven Central)-->

@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -47,6 +48,10 @@
             <email>david@carrclan.us</email>
             <timezone>-5</timezone>
         </developer>
+        <developer>
+            <name>Cause Code Technologies, Pune</name>
+            <email>bootstrap@causecode.com</email>
+        </developer>
     </developers>
 
     <properties>
@@ -79,24 +84,24 @@
         </dependency>
 
         <!-- logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.11</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- /logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- /logging -->
 
         <dependency>
             <groupId>org.testng</groupId>
@@ -107,17 +112,41 @@
 
     </dependencies>
 
+    <repositories>
+        <!--you need this repo only if you use SNAPSHOT version of mongeez-->
+        <repository>
+            <id>maven-releases</id>
+            <url>https://nexus.causecode.com/#browse/browse:maven-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+        <!--this repo is used to get the latest morphia (it's still not in maven Central)-->
+        <!--morphia is not used by mongeez. it's used in this example just to simplify crud operations-->
+        <repository>
+            <id>morphia.googlecode.com</id>
+            <name>Morphia Repo at Google Code</name>
+            <url>http://morphia.googlecode.com/svn/mavenrepo</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>https://nexus.causecode.com/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.mongeez</groupId>
+                <artifactId>mongeez</artifactId>
+                <version>0.9.7-RC1</version>
+            </extension>
+        </extensions>
     </build>
 </project>
