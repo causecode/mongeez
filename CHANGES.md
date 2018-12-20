@@ -1,5 +1,8 @@
 # Mongeez #
 
+### Version 0.9.7-RC1 ###
+* added support to run migration with authentication.
+
 ### Version 0.9.6 ###
 * added context parsing to formatted javascript changesets [#54](https://github.com/mongeez/mongeez/pull/54)
 
